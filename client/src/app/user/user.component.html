@@ -1,0 +1,94 @@
+<div class = "container" >
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="input-group mb-6">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)] = "firstName"
+
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click) = "searchByName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-xs-10">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let user of users;"
+        >
+        <img src= {{user.imagePath}} class="card-img-top" alt = '#'>
+
+
+        <div class="card bg-light">
+          <div class="card-body text-right">
+         <h6>Email </h6> {{ user.email }}<br>
+            <h6> First name</h6>{{user.firstName}}<br>
+            <h6>Descripcion</h6>{{user.description}}
+            <h6>City</h6>{{user.city}}
+            <!-- <img src = "../../assets/users/30112020-175235_377-breed_1.png" alt = "#"> -->
+         </div>
+       </div>
+        <button class = "btn btn-primary" (click) = "open(mymodal)"> Contact</button>
+        </li>
+      </ul>
+    </div>
+
+
+    <ng-template #mymodal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Write your message and receive the answer on your question</h4>
+
+         </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="yourName">Your name</label>
+            <div class="text">
+              <input id="yourMessage" class="form-control">
+              <div class="input-group-append">
+
+              </div>
+            </div>
+            <label for="yourEmail">Your email</label>
+            <div class="text">
+              <input id="yourEmail" class="form-control">
+              <div class="input-group-append">
+
+              </div>
+            </div>
+            <label for="yourPhoneNumber">Your phone number</label>
+            <div class="text">
+              <input id="yourPhoneNumber" class="form-control" placeholder="48 504 14 17 69">
+              <div class="input-group-append">
+
+              </div>
+            </div>
+            <label for="yourMessage">Your message</label>
+            <div class="text">
+              <textarea id="yourMessage" class="form-control"></textarea>
+
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Send message')">Send message</button>
+      </div>
+    </ng-template>
+
+
+
+    <hr>
+
+
+
