@@ -1,0 +1,84 @@
+
+<div class="container" *ngIf="currentUser;">
+  <div class="welcome">
+    <h3>Hello, {{currentUser.username}}!</h3>
+      </div>
+
+  <div class="container" *ngIf="currentUser; else loggedOut">
+    <div  class="card mb-3" >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img [src]="imagePreview" class="card-img" alt="image" *ngIf ="imagePreview">
+
+        </div>
+        <div class="col-md-8">
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input type="text" id ="firstName" class="form-control" placeholder="Name"[(ngModel)] = "currentUser.firstName"
+                name = "firstName"   >
+              </div>
+              <div class="col">
+                <input type="text" id="lastName" class="form-control" placeholder="Surname" [(ngModel)] = "currentUser.lastName"
+                name = "lastName">
+              </div>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Your email" [(ngModel)] = "currentUser.email"
+              name = "email">
+            </div>
+
+            <div class = "col">
+             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Descripcion" [(ngModel)] = "currentUser.description"
+             name = "description"
+             >
+
+
+              <select class="form-control"
+             (change) ="onchangeCity($event.target.value)"
+             [(ngModel)] = "selectedCity"
+             >
+            <option  *ngFor="let city of cities" [ngValue] = "city.title"
+           >{{ city.title }}</option></select>
+
+              Selected:{{selectedCity|json}}
+
+             <div class = "form-group">
+               <label><strong>Status:</strong></label>
+               {{currentUser.published ? "Published" : "Pending"}}
+             </div>
+               <form method="post" id="add-image" enctype="multipart/form-data" >
+              <label class="btn btn-default">
+                <input type="file" (change)="onFileUpload($event)" />
+              </label>
+              <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+                Upload
+              </button>
+              <div class="alert alert-light" role="alert">{{ message }}</div></form>
+
+             <button class = "btn btn-primary mb-2" *ngIf = "currentUser.published" (click)="updatePublished(false)">Unpublish</button>
+             <button  class="btn btn-primary mb-2" *ngIf = "!currentUser.published" (click)= "updatePublished(true)">Publish</button>
+             <button type="submit" class="btn btn-primary mb-2" (click) ="updateUser()">Update</button>
+
+             </div>
+
+            </form>
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf ="!currentUser">
+    <br> <p>Cannot open this profile</p>
+  </div>
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
+
+
+
+
+
+
