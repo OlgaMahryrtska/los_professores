@@ -1,0 +1,22 @@
+.col-xs-12 ul {
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  justify-content: center;
+}
+
+.col-xs-12 ul li {
+  list-style: none;
+  flex: 0 0 33.333333%;
+  border: none;
+}
+
+.input-group {
+  padding-top: 50px;
+  justify-content: center;
+  border: none;
+}
+.row {
+  justify-content: center;
+}

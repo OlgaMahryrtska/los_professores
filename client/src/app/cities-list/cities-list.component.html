@@ -1,0 +1,39 @@
+<div class = "container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="input-group mb-6">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Barcelona"
+          [(ngModel)]="title"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-xs-12">
+
+      <ul class="list-group list-group-horizontal">
+        <li
+          class="list-group-item"
+          *ngFor="let city of cities; let c = index"
+          [class.active]="c== currentIndex"
+        >
+
+        <img src={{city.imagePath}} class="card-img-top" alt="#">
+         {{ city.title }}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
