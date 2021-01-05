@@ -1,0 +1,11 @@
+.card {
+  margin-top: 50px;
+  display: flex;
+}
+.form-group {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.col-sm-6 {
+  margin-bottom: 185px;
+}
